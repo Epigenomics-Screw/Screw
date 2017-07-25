@@ -3,10 +3,11 @@ sudo: required
 services:
   - docker
 install:
-  - pip install -U setuptools
-  - pip install cwl-runner
+  - pip install -U setuptools==24.0.3
+  - pip install cwl-runner cwltool==1.0.20160712154127 schema-salad==1.14.20160708181155 avro==1.8.1
+  
 script:
   - mkdir tmp
   - cp cwl/tools/*.cwl tmp
-  - for cwlfile in `ls tmp`; do sed -i "s/epigenomicscrew\/screw/epigenomicscrew\/screw:${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}/g" tmp/$cwlfile; done;
+  - for cwlfile in `ls tmp`; do sed -i "s/epigenomicscrew\/screw/epigenomic_screw\/screw:${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}/g" tmp/$cwlfile; done;
   - cwltool tmp/preprocess.cwl --toConvert test_data/GSM1589192_K562.1_2.txt.chr19 --format farlik2013
