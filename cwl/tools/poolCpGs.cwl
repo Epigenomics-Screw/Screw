@@ -3,7 +3,7 @@ class: CommandLineTool
 baseCommand: poolCpGs.R
 hints:
   - class: DockerRequirement
-    dockerPull: "quay.io/epigenomicscrew/screw"
+    dockerPull: "quay.io/epigenomic_screw/screw"
 
 inputs:
   poolCpGs:

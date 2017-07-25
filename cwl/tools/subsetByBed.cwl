@@ -3,7 +3,7 @@ class: CommandLineTool
 baseCommand: subsetByBed.R
 hints:
   - class: DockerRequirement
-    dockerPull: "quay.io/epigenomicscrew/screw"
+    dockerPull: "quay.io/epigenomic_screw/screw"
 arguments: ["-d", $(runtime.outdir)]
 
 inputs:
