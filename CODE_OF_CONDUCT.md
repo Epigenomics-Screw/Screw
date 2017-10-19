@@ -51,9 +51,11 @@ In order to protect volunteers from abuse and burnout, we reserve the right to r
 We will respect confidentiality requests for the purpose of protecting victims of abuse. At our discretion, we may publicly name a person about whom we’ve received harassment complaints, or privately warn third parties about them, if we believe that doing so will increase the safety of project members or the general public. We will not name harassment victims without their affirmative consent.
 
 ## Consequences
-Participants asked to stop any harassing behavior are expected to comply immediately.
+If participants are asked to stop any harassing behavior, in most cases this will be done so gently and with explanations of why it is problematic. Nobody is perfect and people make mistakes; participants are asked to take requests to stop behaviour receptively and without defensiveness. They are also asked to comply with the request to stop immediately. In most cases, further action should not be necessary. 
 
-If a participant engages in harassing behavior, RESPONSE TEAM may take any action they deem appropriate, up to and including expulsion from all project spaces and identification of the participant as a harasser to other project members or the general public.
+In more serious cases, such as where a participant poses an imminent danger to other participants or refuses to stop when asked to, the response team may take any action they deem appropriate, up to and including expulsion from all project spaces and identification of the participant as a harasser to other project members or the general public.
+
+
 
 ## Members of the Response Team
 * Kieran (@oneillkza)
