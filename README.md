@@ -1,6 +1,8 @@
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/NCBI-March-Hackathon-CWL-Team/Lobby)
-[![Docker Repository on Quay](https://quay.io/repository/epigenomicscrew/screw/status "Docker Repository on Quay")](https://quay.io/repository/ncbi-hackathons/screw)
+[![Docker Repository on Quay](https://quay.io/repository/epigenomic_screw/screw/status "Docker Repository on Quay")](https://quay.io/repository/epigenomic_screw/screw)
 [![Travis Build Status](https://travis-ci.org/Epigenomics-Screw/Screw.svg?branch=master)](https://travis-ci.org/Epigenomics-Screw/Screw)
+
+*We are having some issues with quay.io builds right now, so please bear with us while we figure this out.*
 
 # Single Cell Reproducible Epigenomics Workflow (SCREW)
 
