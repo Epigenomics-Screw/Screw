@@ -1,22 +1,22 @@
 cwlVersion: v1.0
 class: CommandLineTool
+baseCommand: subsetByBed.R
 hints:
   - class: DockerRequirement
-    dockerPull: "quay.io/epigenomicscrew/screw"
-baseCommand: pairwise-euc-heatmap.R
+    dockerPull: "quay.io/epigenomic_screw/screw"
+arguments: ["-d", $(runtime.outdir)]
+
 inputs:
-  pairwiseTable:
+  toSubset:
     type: File
     inputBinding:
-      position: 1
       prefix: -i
-  annotation:
+  bedFile:
     type: File
     inputBinding:
-      position: 2
-      prefix: -a
+      prefix: -b
 outputs:
-  tableHeat:
+  subsetted:
     type: File
     outputBinding:
-      glob: "*.pdf"
+      glob: "*.sym"

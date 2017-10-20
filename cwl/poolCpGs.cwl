@@ -1,17 +1,24 @@
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: pairwise-distance.sh
+baseCommand: poolCpGs.R
 hints:
   - class: DockerRequirement
-    dockerPull: "quay.io/epigenomicscrew/screw"
-stdout: pairwise-euc.txt
+    dockerPull: "quay.io/epigenomic_screw/screw"
+
 inputs:
-  pairDirectory:
+  poolCpGs:
     type: Directory
     inputBinding:
       prefix: -i
+  outfile:
+    type: string
+    inputBinding:
+      prefix: -o
+
 outputs:
-  tableDistance:
+  pooled:
     type: File
     outputBinding:
-      glob: "pairwise-euc.txt"
+      glob: "*.txt"
+
+

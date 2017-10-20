@@ -1,22 +1,22 @@
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: subsetByBed.R
+baseCommand: tsvToBigWig.R
 hints:
   - class: DockerRequirement
-    dockerPull: "quay.io/epigenomicscrew/screw"
+    dockerPull: "quay.io/epigenomic_screw/screw"
 arguments: ["-d", $(runtime.outdir)]
 
 inputs:
-  toSubset:
+  toConvert:
     type: File
     inputBinding:
       prefix: -i
-  bedFile:
-    type: File
-    inputBinding:
-      prefix: -b
 outputs:
-  subsetted:
+  methBW:
     type: File
     outputBinding:
-      glob: "*.sym"
+      glob: "*.prop_meth.bw"
+  covBW:
+    type: File
+    outputBinding:
+      glob: "*.cov.bw"

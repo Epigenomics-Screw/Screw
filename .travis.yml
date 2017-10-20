@@ -8,6 +8,6 @@ install:
   
 script:
   - mkdir tmp
-  - cp cwl/tools/*.cwl tmp
+  - cp cwl/*.cwl tmp
   - for cwlfile in `ls tmp`; do sed -i "s/epigenomicscrew\/screw/epigenomic_screw\/screw:${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}/g" tmp/$cwlfile; done;
   - cwltool tmp/preprocess.cwl --toConvert test_data/GSM1589192_K562.1_2.txt.chr19 --format farlik2013
