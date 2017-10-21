@@ -10,7 +10,7 @@ inputs:
   outDir:
     type: string
     inputBinding:
-    prefix: -d
+      prefix: -d
   toConvert:
     type: File
     inputBinding:

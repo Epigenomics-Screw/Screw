@@ -9,8 +9,8 @@ hints:
 inputs:
   outDir:
     type: string
-  inputBinding:
-    prefix: -d
+    inputBinding:
+      prefix: -d
   toCombine:
     type: File
     inputBinding:

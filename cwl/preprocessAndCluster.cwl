@@ -32,7 +32,7 @@ steps:
     in: 
       masterDir: outputDir
       # subDir: $(["meth", "meth_sym", "prop_meth", "cov_bw subset"])
-    out: subDir
+    out: []
     # scatter: subDir
   directory_to_array:
     run: directoryToArray.cwl
