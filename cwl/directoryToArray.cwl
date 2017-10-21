@@ -16,7 +16,7 @@ expression: |
          if (inputs.directory.listing[i].class != 'File') {
             inputs.directory.listing.splice(i, 1);
          }
-       }
+      }
       return { "array_of_files": inputs.directory.listing };
   }
 
