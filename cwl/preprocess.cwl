@@ -3,6 +3,7 @@ class: Workflow
 
 inputs:
   toConvert: File
+  dirNames: string[]
   format: string
 
 outputs:
@@ -20,6 +21,10 @@ outputs:
     outputSource: methylationBigWIG/covBW
 
 steps:
+  mkdir:
+    run: mkdir.cwl
+    in:
+      dirNames: dirNames
   convertMethylation:
     run: interconverter.cwl
     in:
