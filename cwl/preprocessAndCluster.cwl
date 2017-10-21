@@ -48,17 +48,3 @@ steps:
     out: [ converted, combined, methBW, covBW ]
 
     scatter: toConvert
-
-
-# files=meth_sym/*
-# for i in $files
-# do
-#   cwltool ../Screw/cwl/subsetByBed.cwl --bedFile hg19_enhancer_atlas_cd34.bed --toSubset $i
-# done
-
-# mv *meth.sym subset
-
-# cwltool ../Screw/cwl/clustering.cwl --pairDirectory subset --annotation heatmap.txt
-
-
-

@@ -2,7 +2,7 @@ cwlVersion: v1.0
 class: Workflow
 
 inputs:
-  outDir: outDir
+  outDir: string
   toConvert: File
   format: string
 
