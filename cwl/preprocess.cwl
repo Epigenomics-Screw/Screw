@@ -2,6 +2,7 @@ cwlVersion: v1.0
 class: Workflow
 
 inputs:
+  outDir: outDir
   toConvert: File
   format: string
 
@@ -23,17 +24,20 @@ steps:
   convertMethylation:
     run: interconverter.cwl
     in:
+      outDir: outDir
       toConvert: toConvert
       format: format 
     out: [converted]
   mergeSymmetric:
     run: symmetriccpgs.cwl
     in:
+      outDir: outDir
       toCombine: convertMethylation/converted
     out: [combined]
   methylationBigWIG:
     run: methToBigWig.cwl
     in: 
+      outDir: outDir
       toConvert: mergeSymmetric/combined
     out: [methBW, covBW]
     

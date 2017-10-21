@@ -15,7 +15,8 @@ spec <- matrix(c(
 
 opt = getopt(spec)
 in.file <- opt$infile
-out.dir <- opt$outdir
+out.methDir <- file.path(opt$outdir, 'prop_meth')
+out.covDir <- file.path(opt$outdir, 'cov_bw')
 
 if(is.null(in.file)|is.null(out.dir))
 {
@@ -49,9 +50,9 @@ seqlengths(base.gr) <- guessSeqLengths(base.gr)
 
 meth.gr <- base.gr
 elementMetadata(meth.gr) <- data.frame(score=cpg.bed$meth_prop)
-export.bw(meth.gr, file.path(out.dir, paste0(basename(in.file), '.prop_meth.bw')))
+export.bw(meth.gr, file.path(out.methDir, paste0(basename(in.file), '.prop_meth.bw')))
 
 cov.gr <- base.gr
 elementMetadata(cov.gr) <- data.frame(score=cpg.bed$cov)
-export.bw(cov.gr, file.path(out.dir, paste0(basename(in.file), '.cov.bw')))
+export.bw(cov.gr, file.path(out.covDir, paste0(basename(in.file), '.cov.bw')))
 

@@ -4,12 +4,12 @@ class: Workflow
 requirements:
   - class:  SubworkflowFeatureRequirement
   - class:  ScatterFeatureRequirement
-
+  - class: InlineJavascriptRequirement
 
 inputs:
   inputDir: Directory 
+  outputDir: string
   format: string
-  outputDir: Directory
 
 
 outputs:
@@ -31,7 +31,9 @@ steps:
     run: mkdir.cwl
     in: 
       masterDir: outputDir
-    out: [ subDir ]
+      # subDir: $(["meth", "meth_sym", "prop_meth", "cov_bw subset"])
+    out: subDir
+    # scatter: subDir
   directory_to_array:
     run: directoryToArray.cwl
     in:
@@ -40,9 +42,23 @@ steps:
   preprocess:
     run: preprocess.cwl
     in: 
+      outDir: outputDir
       toConvert: directory_to_array/array_of_files
       format: format  
-    out: [ converted, combined, methBW, covBW]
+    out: [ converted, combined, methBW, covBW ]
 
     scatter: toConvert
+
+
+# files=meth_sym/*
+# for i in $files
+# do
+#   cwltool ../Screw/cwl/subsetByBed.cwl --bedFile hg19_enhancer_atlas_cd34.bed --toSubset $i
+# done
+
+# mv *meth.sym subset
+
+# cwltool ../Screw/cwl/clustering.cwl --pairDirectory subset --annotation heatmap.txt
+
+
 

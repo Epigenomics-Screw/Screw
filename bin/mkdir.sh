@@ -1,15 +1,30 @@
 #!/bin/bash
 
 
-DIRECTORY=../
+while getopts ":m:" opt; do
+  case ${opt} in
+    m )
+    master=$OPTARG
+    ;;
+    # s )
+    # sub=$OPTARG
+    # ;;
+  esac
+done
 
-if [[ -d "${DIRECTORY}" && ! -L "${DIRECTORY}" ]] ; then
-  echo "It's a bona-fide directory"
-  read -p 'sub-directories: ' sD1 sD2 sD3 sD4
-  for ((i=1;i<=4;i++))
+if [ ! -d "${master}" ] ; then
+  mkdir $master
+fi
+
+# if [ ! -d "${sub}" ] ; then
+#   mkdir $master/$sub
+# fi
+
+subDir=("meth" "meth_sym" "prop_meth" "cov_bw subset")
+
+for i in "${subDir[@]}"
   do
-    if [[ -d "${sD}$i" && ! -L "${sD}$i" ]] ; then
-      mkdir sD$i
+    if [ ! -d "${i}" ] ; then
+      mkdir $master/$i
     fi
   done
-fi

@@ -4,9 +4,13 @@ baseCommand: interconverter.sh
 hints:
   - class: DockerRequirement
     dockerPull: "quay.io/epigenomic_screw/screw"
-arguments: ["-d", $(runtime.outdir)]
+# arguments: ["-d", $(runtime.outdir)]
 
 inputs:
+  outDir:
+    type: Directory
+    inputBinding:
+      prefix: -d
   toConvert:
     type: File
     inputBinding:
