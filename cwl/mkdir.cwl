@@ -10,7 +10,7 @@ baseCommand: mkdir.sh
 
 inputs:
   masterDir:
-    type: string
+    type: Directory
     inputBinding:
       prefix: -m
   # subDir:

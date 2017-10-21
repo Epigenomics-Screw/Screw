@@ -8,7 +8,7 @@ hints:
 
 inputs:
   outDir:
-    type: string
+    type: Directory
     inputBinding:
       prefix: -d
   toCombine:

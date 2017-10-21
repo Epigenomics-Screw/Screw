@@ -4,7 +4,7 @@
 while getopts ":d:i:f:" opt; do
   case ${opt} in
     d )
-    outdir=$OPTARG/meth
+    outdir=${OPTARG}/meth
     ;;
     i )
     infile=$OPTARG

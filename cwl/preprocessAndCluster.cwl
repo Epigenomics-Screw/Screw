@@ -8,7 +8,7 @@ requirements:
 
 inputs:
   inputDir: Directory 
-  outputDir: string
+  outputDir: Directory
   format: string
 
 
