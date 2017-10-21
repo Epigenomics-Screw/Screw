@@ -9,6 +9,7 @@ requirements:
 inputs:
   inputDir: Directory 
   format: string
+  outputDir: Directory
 
 
 outputs:
@@ -26,6 +27,11 @@ outputs:
     outputSource: preprocess/covBW
 
 steps:
+  mkdir:
+    run: mkdir.cwl
+    in: 
+      masterDir: outputDir
+    out: [ subDir ]
   directory_to_array:
     run: directoryToArray.cwl
     in:
