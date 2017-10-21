@@ -10,5 +10,6 @@ if [[ -d "${DIRECTORY}" && ! -L "${DIRECTORY}" ]] ; then
   do
     if [[ -d "${sD$i}" && ! -L "${sD$i}" ]] ; then
       mkdir sD$i
+    fi
   done
 fi
