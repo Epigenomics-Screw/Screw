@@ -21,6 +21,7 @@ bigwig <- params$BigWig
 cpg_bed <- params$cpg_bed 
 targets_bed <- params$targets_bed
 
+
 libraries <- c("Gviz", "GenomicRanges", "knitr", "rmarkdown")
 check_install <- function(package_name) {
   if (! package_name %in% rownames(installed.packages()))
@@ -55,6 +56,8 @@ dtrack <- DataTrack(bigwig,
                     name="Data",
                     ylim = c(1.0, 1.0))
 
+cat("Loading gene models from: ")
+print(gene_annotations)
 cpg_track <- AnnotationTrack(cpg_bed,
                              genome=genome_build,
                              name="CpG")
@@ -89,7 +92,7 @@ while(i <= nrow(targets)) {
            from=targets$chromStart[i],
            to=targets$chromEnd[i],
            stackHeight = 1,
-           extend.left = 1e+02, extend.right = 1e+02,
+           extend.left = 1e+03, extend.right = 1e+03,
            sizes = c(0.2, 0.15, 0.15, 0.2, 0.2))
   i = i+1
 }
