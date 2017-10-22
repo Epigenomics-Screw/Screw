@@ -5,32 +5,17 @@ requirements:
   InlineJavascriptRequirement: {}
 
 inputs:
-  meth:
-    type: File[]
-  meth_sym:
-    type: File[]
-  prop_meth:
-    type: File[]
-  cov_bw:
-    type: File[]
-  subset:
-    type: File[]
-  distanceMatrix:
-    type: File
-  heatMap:
-    type: File
+  meth: File[]
+  meth_sym: File[]
+  prop_meth: File[]
+  cov_bw: File[]
+  subset: File[]
+  distanceMatrix: File
+  heatMap: File
 
 
 expression: |
   ${ 
-    // inputs.meth.basename = "*.meth";
-    // inputs.meth_sym.basename = "*.sym";
-    // inputs.prop_meth.basename = "*.prop_meth.bw";
-    // inputs.cov_bw.basename = "*.cov.bw";
-    // inputs.subset.basename = "*.sym";
-    // inputs.distanceMatrix.basename = "pairwise-euc.txt";
-    // inputs.heatMap.basename = "*.pdf";
-
     // to include: meth meth_sym prop_meth cov_bw subset cluster
     var r = {
       "outputs":

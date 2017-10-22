@@ -124,7 +124,6 @@ steps:
       subset: subset_by_bed/subsetted
       distanceMatrix: clustering/tableDistance
       heatMap: clustering/tableHeat
-    out:
-      out: results  
+    out: [ results ]
 
 
