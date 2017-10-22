@@ -1,16 +1,16 @@
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: symmetriccpgs.sh
-# arguments: ["-d", $(runtime.outdir)]
 hints:
   - class: DockerRequirement
     dockerPull: "quay.io/epigenomic_screw/screw"
+baseCommand: symmetriccpgs.sh
+arguments: ["-d", $(runtime.outdir)]
 
 inputs:
-  outDir:
-    type: Directory
-    inputBinding:
-      prefix: -d
+  # outDir:
+  #   type: Directory
+  #   inputBinding:
+  #     prefix: -d
   toCombine:
     type: File
     inputBinding:

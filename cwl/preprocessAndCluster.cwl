@@ -30,6 +30,12 @@ outputs:
   subsettedMeth:
     type: File[]
     outputSource: subset_by_bed/subsetted
+  distanceMatrix:
+    type: File
+    outputSource: clustering/tableDistance
+  heatMap:
+    type: File
+    outputSource: clustering/tableHeat
 
 
 steps:
@@ -78,39 +84,44 @@ steps:
   preprocess:
     run: preprocess.cwl
     in: 
-      outDir: outputDir
+      # outDir: outputDir
       toConvert: directory_to_array/array_of_files
       format: format  
     out: [ converted, combined, methBW, covBW ]
     scatter: toConvert
 
-# subsetting with bed file
 # TODO: Test
+# subsetting with bed file
   subset_by_bed:
     run: subsetByBed.cwl
     in:
-      outDir: outputDir
+      # outDir: outputDir
       toSubset: preprocess/combined
       bedFile: subsetBed
     scatter: toSubset
-    out: subsettedMeth
+    out: subsetted
 
+# TODO: Connect subset files & test
 # distanceMatrix & heatMap
-# TODO
   clustering:
     run: clustering.cwl
     in:
       pairDirectory: outputDir
       annotation: annotationFile
-    out:
-      tbDist: File
-      tbHeat: File
+    out: [ tableDistance, tableHeat ]
 
 # TODO
   directoryLayout:
     run: dirLayout.cwl
     in:
-      #everything
+      #every output file
+      meth: preprocess/converted
+      meth_sym: preprocess/combined
+      prop_meth: preprocess/methBW
+      cov_bw: preprocess/covBW
+      subset: subset_by_bed/subsetted
+      distanceMatrix: clustering/tableDistance
+      heatMap: clustering/tableHeat
     out:
       out: results  
 

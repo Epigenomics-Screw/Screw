@@ -15,8 +15,10 @@ spec <- matrix(c(
 
 opt = getopt(spec)
 in.file <- opt$infile
-out.methDir <- file.path(opt$outdir, 'prop_meth')
-out.covDir <- file.path(opt$outdir, 'cov_bw')
+out.methDir <- opt$outdir
+out.covDir <- opt$outdir
+# out.methDir <- file.path(opt$outdir, 'prop_meth')
+# out.covDir <- file.path(opt$outdir, 'cov_bw')
 
 if(is.null(in.file)|is.null(out.dir))
 {

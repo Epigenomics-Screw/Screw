@@ -21,10 +21,10 @@ steps:
     run: pairwise-distance.cwl
     in: 
       pairDirectory: pairDirectory
-    out: [tableDistance]
+    out: tableDistance
   heatMap:
     run: pairwise-euc-heatmap.cwl
     in:
       pairwiseTable: distanceMatrix/tableDistance
       annotation: annotation
-    out: [tableHeat]
+    out: tableHeat

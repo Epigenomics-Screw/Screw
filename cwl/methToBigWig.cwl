@@ -1,16 +1,16 @@
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: tsvToBigWig.R
 hints:
   - class: DockerRequirement
     dockerPull: "quay.io/epigenomic_screw/screw"
-# arguments: ["-d", $(runtime.outdir)]
+baseCommand: tsvToBigWig.R
+arguments: ["-d", $(runtime.outdir)]
 
 inputs:
-  outDir:
-    type: Directory
-    inputBinding:
-      prefix: -d
+  # outDir:
+  #   type: Directory
+  #   inputBinding:
+  #     prefix: -d
   toConvert:
     type: File
     inputBinding:
