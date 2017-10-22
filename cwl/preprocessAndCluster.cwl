@@ -96,7 +96,7 @@ steps:
   clustering:
     run: clustering.cwl
     in:
-      pairDirectory: outputDir/subset #to fix
+      pairDirectory: outputDir
       annotation: annotationFile
     out:
       tbDist: File

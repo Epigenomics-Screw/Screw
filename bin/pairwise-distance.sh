@@ -2,10 +2,10 @@
 while getopts ":d:i:" opt; do
   case ${opt} in
     d )
-    outdir=$OPTARG
+    outdir=${OPTARG}/subset
     ;;
     i )
-    indir=$OPTARG
+    indir=${OPTARG}/subset
     ;;
   esac
 done
