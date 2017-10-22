@@ -20,7 +20,7 @@ fi
 #   mkdir $master/$sub
 # fi
 
-subDir=("meth" "meth_sym" "prop_meth" "cov_bw subset")
+subDir=("meth" "meth_sym" "prop_meth" "cov_bw" "subset")
 
 for i in "${subDir[@]}"
   do

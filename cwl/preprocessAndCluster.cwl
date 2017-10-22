@@ -11,7 +11,7 @@ inputs:
   outputDir: Directory
   format: string
   subsetBed: File
-  # annotationFile: File
+  annotationFile: File
 
 
 outputs:
@@ -58,7 +58,7 @@ steps:
   #       subDirs:
   #         in: 
   #           masterDir: outputDir
-  #           subDir: [ "meth", "meth_sym", "prop_meth", "cov_bw subset" ]
+  #           subDir: [ "meth", "meth_sym", "prop_meth", "cov_bw", "subset" ]
   #         run: mkSubDirs.cwl
   #         scatter: subDir
   #         out: []
@@ -87,13 +87,13 @@ steps:
       toSubset: preprocess/combined
       bedFile: subsetBed
     scatter: toSubset
-    out: subsetted
+    out: subsettedMeth
 
 # TODO
-  # clustering:
-  #   run: clustering.cwl
-  #   in:
-  #     pairDirectory: subset_by_bed/subsetted # TODO: Directory
-  #     annotation: annotationFile
-  #   out: []
+  clustering:
+    run: clustering.cwl
+    in:
+      pairDirectory: outputDir/subset #to fix
+      annotation: annotationFile
+    out: []
 
