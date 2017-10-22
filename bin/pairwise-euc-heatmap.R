@@ -5,9 +5,9 @@ library(pheatmap)
 library(RColorBrewer)
 
  option_list = list(
-   make_option(c("-i", "--pairwiseTable"), action="store",
+    make_option(c("-i", "--pairwiseTable"), action="store",
                type="character", default=NA, help="dataset file name"),
- 	make_option(c("-a", "--annotation"), action="store", type="character",
+   	make_option(c("-a", "--annotation"), action="store", type="character",
               default=NA, help="Annotation file for coloring heatmap
               margins by label."));
 

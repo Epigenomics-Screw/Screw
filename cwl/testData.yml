@@ -1,0 +1,9 @@
+inputDir: Screw/test_data
+# /GSM1589192_K562.1_2.txt.chr19 
+format: "farlik2013"
+subsetBed: 
+  class: File
+  path: Screw/test_metadata/example_dmrs.bed
+annotationFile:
+  class: File
+  path: 
