@@ -25,6 +25,6 @@ subDir=("meth" "meth_sym" "prop_meth" "cov_bw subset")
 for i in "${subDir[@]}"
   do
     if [ ! -d "${i}" ] ; then
-      mkdir $master/$i
+      mkdir ${master}/$(i)
     fi
   done
