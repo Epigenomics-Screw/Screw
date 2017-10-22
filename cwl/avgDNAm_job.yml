@@ -1,0 +1,7 @@
+bwInput: 
+  class: File
+  path: /Users/sibyldrissler/Screw/GSM1589192_K562.1_2.txt.chr19.meth.sym.prop_meth.bw
+lolaRDB: 
+  class: Directory
+  path: /Users/sibyldrissler/scratch/ns5bc/resources/regions/LOLACore/hg19
+lolaCollections: [ucsc_features]
