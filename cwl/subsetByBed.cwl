@@ -4,13 +4,13 @@ baseCommand: subsetByBed.R
 hints:
   - class: DockerRequirement
     dockerPull: "quay.io/epigenomic_screw/screw"
-# arguments: ["-d", $(runtime.outdir)]
+arguments: ["-d", $(runtime.outdir)]
 
 inputs:
-  outDir:
-    type: Directory
-    inputBinding:
-      prefix: -d
+  # outDir:
+  #   type: Directory
+  #   inputBinding:
+  #     prefix: -d
   toSubset:
     type: File
     inputBinding:

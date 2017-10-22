@@ -12,7 +12,8 @@ spec <- matrix(c(
 
 opt = getopt(spec)
 in.file <- opt$infile
-out.dir <- file.path(opt$outdir, 'subset')
+out.dir <- opt$outdir
+# out.dir <- file.path(opt$outdir, 'subset')
 bed.file <- opt$bedfile
 
 if(is.null(in.file)|is.null(out.dir))

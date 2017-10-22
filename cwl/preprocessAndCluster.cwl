@@ -34,12 +34,13 @@ outputs:
 
 steps:
 # Making the directories (predetermined) for organizing the result files
-  mkdir:
-    run: mkdir.cwl
-    in: 
-      masterDir: outputDir
-    out: []
+  # mkdir:
+  #   run: mkdir.cwl
+  #   in: 
+  #     masterDir: outputDir
+  #   out: []
 
+# Alternative directories maker
 # TODO: Test
   # mkdir2:
   #   in:
@@ -73,6 +74,7 @@ steps:
       directory: inputDir
     out: [ array_of_files ]
 
+# convertMethylation, mergeSymmetric, methylationBigWIG
   preprocess:
     run: preprocess.cwl
     in: 
@@ -82,6 +84,7 @@ steps:
     out: [ converted, combined, methBW, covBW ]
     scatter: toConvert
 
+# subsetting with bed file
 # TODO: Test
   subset_by_bed:
     run: subsetByBed.cwl
@@ -92,6 +95,7 @@ steps:
     scatter: toSubset
     out: subsettedMeth
 
+# distanceMatrix & heatMap
 # TODO
   clustering:
     run: clustering.cwl
@@ -101,5 +105,13 @@ steps:
     out:
       tbDist: File
       tbHeat: File
+
+# TODO
+  directoryLayout:
+    run: dirLayout.cwl
+    in:
+      #everything
+    out:
+      out: results  
 
 
