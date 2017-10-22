@@ -1,5 +1,5 @@
 
-FROM quay.io/epigenomicscrew/base
+FROM quay.io/epigenomic_screw/base
 
 USER root
 RUN apt-get -y -m update && apt-get install -y zlib1g-dev lib32z1-dev
