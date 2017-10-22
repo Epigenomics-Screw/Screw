@@ -1,0 +1,97 @@
+---
+title: "Visualise DNA methylation per library for a specified region"
+author: "Connor Morgan-Lang"
+date: "October 20, 2017"
+output: html_document
+params:
+  genome_build: "hg19"
+  annotation: NA
+  BigWig: NA
+  targets_bed: NA
+  cpg_bed: NA
+---
+
+Loading libraries that will be used, checking for installations and installing those which are not installed. 
+
+```{r Boilerplate, message=FALSE, warning=FALSE, error=FALSE}
+
+genome_build <- params$genome_build
+gene_annotations <- params$annotation
+bigwig <- params$BigWig
+cpg_bed <- params$cpg_bed 
+targets_bed <- params$targets_bed
+
+libraries <- c("Gviz", "GenomicRanges", "knitr", "rmarkdown")
+check_install <- function(package_name) {
+  if (! package_name %in% rownames(installed.packages()))
+     install.packages(package_name)
+}
+lapply(libraries, check_install)
+
+library(Gviz)
+library(GenomicRanges)
+library(knitr)
+library(rmarkdown)
+
+```
+
+```{r retrieve_biomart, echo=FALSE, include=FALSE, eval=FALSE}
+
+bm <- useMart(host = "feb2014.archive.ensembl.org",
+              biomart = "ENSEMBL_MART_ENSEMBL",
+              dataset = "hsapiens_gene_ensembl")
+fm <- Gviz:::.getBMFeatureMap()
+fm[["symbol"]] <- "external_gene_id"
+
+```
+
+Now, load the BED files containing these data. The co-ordinates ```from=6209000, to=6279000``` specify the MLLT1 gene in hg19 release. Next, this should include both a negative and positive control.
+
+```{r load_data}
+gtf_header <- c("chromosome", "source", "feature", "start", "end", "score", "strand", "frame", "attribute")
+
+dtrack <- DataTrack(bigwig, 
+                    genome=genome_build,
+                    name="Data",
+                    ylim = c(1.0, 1.0))
+
+cpg_track <- AnnotationTrack(cpg_bed,
+                             genome=genome_build,
+                             name="CpG")
+
+gffTrack <- GeneRegionTrack(gene_annotations,
+                            genome = genome_build,
+                            start = 6e+06, end = 2.1e+07,
+                            name = "Gene models")
+chroms <- unique(seqnames(gffTrack))
+
+gtrack <- GenomeAxisTrack()
+
+itrack <- IdeogramTrack(genome = genome_build,
+                        chromosome = chroms)
+
+```
+
+
+```{r plot_data}
+
+targets <- read.table(targets_bed, header=FALSE, sep="\t")
+names(targets) <- c("chrom", "chromStart", "chromEnd", "name")
+
+i = 1
+while(i <= nrow(targets)) {
+  cat("Chromosome: ", as.character(targets$chrom[i]), "\n")
+  cat("Name: ", targets$name[i], "\n")
+  cat("Start: ", targets$chromStart[i], "\n")
+  cat("End: ", targets$chromEnd[i], "\n")
+  plotTracks(list(itrack, gffTrack, cpg_track, dtrack, gtrack),
+           chromosome = as.character(targets$chrom[i]),
+           from=targets$chromStart[i],
+           to=targets$chromEnd[i],
+           stackHeight = 1,
+           extend.left = 1e+02, extend.right = 1e+02,
+           sizes = c(0.2, 0.15, 0.15, 0.2, 0.2))
+  i = i+1
+}
+
+```
