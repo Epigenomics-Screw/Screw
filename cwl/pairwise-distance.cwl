@@ -6,10 +6,14 @@ hints:
     dockerPull: "quay.io/epigenomic_screw/screw"
 stdout: pairwise-euc.txt
 inputs:
-  pairDirectory:
-    type: Directory
+  # pairDirectory:
+  #   type: Directory
+  #   inputBinding:
+  #     prefix: -i
+  subsetFiles:
+    type: File[]
     inputBinding:
-      prefix: -i
+      prefix: -f
 outputs:
   tableDistance:
     type: File

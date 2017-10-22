@@ -1,12 +1,14 @@
 #!/bin/bash
-while getopts ":d:i:" opt; do
+
+
+while getopts ":d:f:" opt; do
   case ${opt} in
     d )
     outdir=$OPTARG
     # outdir=${OPTARG}/subset
     ;;
-    i )
-    indir=$OPTARG
+    f )
+    infiles+=($OPTARG)
     # indir=${OPTARG}/subset
     ;;
   esac
@@ -14,12 +16,15 @@ done
 
 outdir=${outdir:-$TMPDIR}
 
-cd ${indir};
-for i in *.sym; do
-printf "%s\t" $(basename ${i} .meth.sym);
+# cd ${indir};
+# for i in *.sym; do
+for i in ${infiles[@]}; do
+  printf "%s\t" $(basename ${i} .meth.sym);
 done
 echo;
-for i in *.sym; do
+
+# for i in *.sym; do
+for i in ${infiles[@]}; do
   awk '{print $1 ":" $2 "\t" $5}' ${i} | sort -k 1b,1 > $outdir/${i}.tojoin;
   printf "%s\t" $(basename ${i} .meth.sym);
   for j in *.sym; do

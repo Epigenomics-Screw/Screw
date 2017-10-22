@@ -8,7 +8,7 @@ requirements:
 
 inputs:
   inputDir: Directory 
-  outputDir: Directory
+  # outputDir: Directory
   format: string
   subsetBed: File
   annotationFile: File
@@ -99,18 +99,20 @@ steps:
       toSubset: preprocess/combined
       bedFile: subsetBed
     scatter: toSubset
-    out: subsetted
+    out: [ subsetted ]
 
-# TODO: Connect subset files & test
+# TODO: test
 # distanceMatrix & heatMap
   clustering:
     run: clustering.cwl
     in:
-      pairDirectory: outputDir
+      # pairDirectory: outputDir
+      subsetFiles: subset_by_bed/subsetted
       annotation: annotationFile
     out: [ tableDistance, tableHeat ]
 
-# TODO
+# TODO: test
+# Setting & moving files to subdirectories
   directoryLayout:
     run: dirLayout.cwl
     in:

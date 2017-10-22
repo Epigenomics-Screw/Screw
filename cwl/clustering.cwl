@@ -5,7 +5,8 @@ requirements:
   - class: MultipleInputFeatureRequirement
 
 inputs:
-  pairDirectory: Directory
+  # pairDirectory: Directory
+  subsetFiles: File[]
   annotation: File
 
 outputs:
@@ -20,7 +21,8 @@ steps:
   distanceMatrix:
     run: pairwise-distance.cwl
     in: 
-      pairDirectory: pairDirectory
+      # pairDirectory: pairDirectory
+      subsetFiles: subsetFiles
     out: tableDistance
   heatMap:
     run: pairwise-euc-heatmap.cwl
