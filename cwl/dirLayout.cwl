@@ -6,15 +6,15 @@ requirements:
 
 inputs:
   meth:
-    type: File
+    type: File[]
   meth_sym:
-    type: File
+    type: File[]
   prop_meth:
-    type: File
+    type: File[]
   cov_bw:
-    type: File
+    type: File[]
   subset:
-    type: File
+    type: File[]
   distanceMatrix:
     type: File
   heatMap:
