@@ -3,7 +3,7 @@ cwlVersion: v1.0
 class: ExpressionTool
 requirements:
   InlineJavascriptRequirement: {}
-label: Convert a Director to an array of Files, skipping subfolders
+label: Convert a Directory to an array of Files, skipping subfolders
 
 inputs:
   directory:

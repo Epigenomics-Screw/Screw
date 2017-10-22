@@ -33,6 +33,7 @@ outputs:
 
 
 steps:
+# Making the directories (predetermined) for organizing the result files
   mkdir:
     run: mkdir.cwl
     in: 
@@ -65,6 +66,7 @@ steps:
 
   #   out: []
 
+# Retrieve an array of files from the input directory
   directory_to_array:
     run: directoryToArray.cwl
     in:
@@ -84,6 +86,7 @@ steps:
   subset_by_bed:
     run: subsetByBed.cwl
     in:
+      outDir: outputDir
       toSubset: preprocess/combined
       bedFile: subsetBed
     scatter: toSubset
@@ -95,5 +98,8 @@ steps:
     in:
       pairDirectory: outputDir/subset #to fix
       annotation: annotationFile
-    out: []
+    out:
+      tbDist: File
+      tbHeat: File
+
 
