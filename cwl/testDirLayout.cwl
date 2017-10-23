@@ -18,7 +18,6 @@ steps:
       directory: inputDir
     out: [ array_of_files ]
 
-# TODO: test
 # Setting & moving files to subdirectories
   directoryLayout:
     run: dirLayout.cwl

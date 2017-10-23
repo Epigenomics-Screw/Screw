@@ -13,7 +13,7 @@ inputs:
   distanceMatrix: File
   heatMap: File
 
-
+# TODO: Testing
 expression: |
   ${ 
     // to include: meth meth_sym prop_meth cov_bw subset cluster
@@ -55,7 +55,8 @@ expression: |
           ] 
         } 
     };
-    return r; }
+    return r; 
+  }
 
 outputs:
   results: Directory
